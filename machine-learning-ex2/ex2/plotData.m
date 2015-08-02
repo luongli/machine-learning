@@ -11,7 +11,16 @@ figure; hold on;
 %               2D plot, using the option 'k+' for the positive
 %               examples and 'ko' for the negative examples.
 %
+pos = find(y == 1);
+neg = find(y == 0);
 
+% plot positive data
+plot(X(pos,1), X(pos, 2), "k+", "markersize", 10, "linewidth", 2);
+plot(X(neg,1), X(neg, 2), "ro", "markersize", 10, "linewidth", 2, "MarkerFaceColor", "y");
+legend("Admitted", "Not admitted");
+xlabel("Exam 1 score");
+ylabel("Exam 2 score");
+title("Figure 1");
 
 
 
