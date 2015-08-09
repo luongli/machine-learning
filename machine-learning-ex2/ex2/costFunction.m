@@ -19,12 +19,19 @@ grad = zeros(size(theta));
 %
 % Note: grad should have the same dimensions as theta
 %
+% convert theta to correct format if not
+if(size(theta)(1) == 1),
+	theta = theta';
+end;
 
+hx = sigmoid(X*theta);
+J = (1/m) * sum([ -y.*log(hx) - (1-y).*log(1-hx) ]);
 
-
-
-
-
+% compute gradient w.r.t each parameter in theta
+grad1 = 1/m * sum( (hx - y) .* X(:, 1));
+grad2 = 1/m * sum( (hx - y) .* X(:, 2));
+grad3 = 1/m * sum( (hx - y) .* X(:, 3));
+grad = [grad1 grad2 grad3];
 
 
 % =============================================================
