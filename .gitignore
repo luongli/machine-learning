@@ -1,2 +1,4 @@
 # backup file of gedit, ending with ~
 *~
+# secret tokens
+*.mat
