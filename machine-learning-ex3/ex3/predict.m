@@ -20,9 +20,20 @@ p = zeros(size(X, 1), 1);
 %       information see 'help max'. If your examples are in rows, then, you
 %       can use max(A, [], 2) to obtain the max for each row.
 %
+X = [ones(m, 1) X];
 
+% Theta1 25x401
+% Theta2 10x26
 
+% compute hx of second layer, the first hidden layer
+hx1 = sigmoid(X*(Theta1')); % size 5000x25
+hx1 = [ones(m, 1) hx1]; %size 5000x26
 
+% compute hx2 of the last layer, the output layer
+hx2 = sigmoid( hx1*(Theta2') ); %size 5000x10
+
+% get the output
+[max_prob, p] = max(hx2, [], 2);
 
 
 

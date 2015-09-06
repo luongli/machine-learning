@@ -29,7 +29,11 @@ X = [ones(m, 1) X];
 %       are in rows, then, you can use max(A, [], 2) to obtain the max 
 %       for each row.
 %       
-
+% X[5000x401]
+% theta[10x401]
+result = X*all_theta'; % size 5000x10
+[max_prob, p] = max(result, [], 2);
+%p([1:20])
 
 
 
