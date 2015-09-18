@@ -15,8 +15,9 @@ X_poly = zeros(numel(X), p);
 %
 % 
 
-X_poly= [X X.^2 X.^3 ...  X.^p];
-
+for i=2:p,
+	X_poly = [X X.^i];
+end;
 
 
 
