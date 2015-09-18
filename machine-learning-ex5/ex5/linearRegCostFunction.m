@@ -24,6 +24,8 @@ grad = zeros(size(theta));
 % theta size: 	2 x 1
 
 % compute the cost
+[a b] = size(X);
+%printf("%d %d\n", a, b);
 hx = X*theta; % size: m x 1
 J = 1/(2*m) * sum((hx - y).^2) + lambda/(2*m)*sum(theta([2:end]).^2);
 
@@ -31,8 +33,10 @@ J = 1/(2*m) * sum((hx - y).^2) + lambda/(2*m)*sum(theta([2:end]).^2);
 %printf("size of grad: "); size(grad)
 %printf("size of X: "); size(X)
 %printf("size of theta: "); size(theta)
+
 grad(1) = 1/m * sum( (hx-y).*X(:, 1) );
-grad([2:end]) = 1/m * sum( (hx-y).*X(:, [2:end]) )' .+ lambda/m*theta([2:end]);
+
+grad([2:end])=1/m * sum( (hx-y).*X(:, [2:end]) )' .+ lambda/m*theta([2:end]);
 
 
 
