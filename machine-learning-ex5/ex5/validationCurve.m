@@ -8,7 +8,7 @@ function [lambda_vec, error_train, error_val] = ...
 %       for different values of lambda. You are given the training set (X,
 %       y) and validation set (Xval, yval).
 %
-
+m = size(X, 1);
 % Selected values of lambda (you should not change this)
 lambda_vec = [0 0.001 0.003 0.01 0.03 0.1 0.3 1 3 10]';
 
@@ -39,7 +39,17 @@ error_val = zeros(length(lambda_vec), 1);
 %
 %
 
-
+for i=1:length(lambda_vec),
+	lambda = lambda_vec(i);
+	theta = trainLinearReg(X, y, Xval, yval, lambda);
+	printf("size of theta: "); size(theta)
+	hx = X*theta; % size i x 1
+	%printf("size hx:"); size(hx)
+	error_train(i) = 1/(2*m) * sum((hx - y).^2);
+	hxVal = Xval*theta; % size i x 1
+	%printf("size hxVal:"); size(hxVal)
+	error_val(i) = 1/(2*m) * sum((hxVal - yval).^2);
+end;
 
 
 
