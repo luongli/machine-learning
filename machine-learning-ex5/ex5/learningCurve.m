@@ -53,6 +53,22 @@ error_val   = zeros(m, 1);
 
 % ---------------------- Sample Solution ----------------------
 
+% size X:	m x 2
+% size Y:	m x 1
+
+for i = 1:m,
+	%printf("%d\n", i);
+	% get theta
+	%printf("size X(1:i, :)"); size(X(1:i, :))
+	theta = trainLinearReg(X(1:i, :), y(1:i), lambda); % size: 2 x 1
+	%printf("size theta:"); size(theta)
+	hx = X(1:i, :)*theta; % size i x 1
+	%printf("size hx:"); size(hx)
+	error_train(i) = 1/(2*m) * sum((hx - y(1:i)).^2);
+	hxVal = Xval*theta; % size i x 1
+	%printf("size hxVal:"); size(hxVal)
+	error_val(i) = 1/(2*m) * sum((hxVal - yval).^2);
+end;
 
 
 
