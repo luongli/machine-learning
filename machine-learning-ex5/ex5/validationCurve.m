@@ -41,8 +41,8 @@ error_val = zeros(length(lambda_vec), 1);
 
 for i=1:length(lambda_vec),
 	lambda = lambda_vec(i);
-	theta = trainLinearReg(X, y, Xval, yval, lambda);
-	printf("size of theta: "); size(theta)
+	theta = trainLinearReg(X, y, lambda);
+	% printf("size of theta: "); size(theta)
 	hx = X*theta; % size i x 1
 	%printf("size hx:"); size(hx)
 	error_train(i) = 1/(2*m) * sum((hx - y).^2);
