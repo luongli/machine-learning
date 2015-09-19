@@ -16,6 +16,7 @@ function [error_train, error_val] = ...
 
 % Number of training examples
 m = size(X, 1);
+xm = size(Xval, 1);
 
 % You need to return these values correctly
 error_train = zeros(m, 1);
@@ -64,10 +65,10 @@ for i = 1:m,
 	%printf("size theta:"); size(theta)
 	hx = X(1:i, :)*theta; % size i x 1
 	%printf("size hx:"); size(hx)
-	error_train(i) = 1/(2*m) * sum((hx - y(1:i)).^2);
-	hxVal = Xval*theta; % size i x 1
+	error_train(i) = 1/(2*i) * sum((hx - y(1:i)).^2);
+	hxVal = Xval([1:end], :)*theta; % size i x 1
 	%printf("size hxVal:"); size(hxVal)
-	error_val(i) = 1/(2*m) * sum((hxVal - yval).^2);
+	error_val(i) = 1/(2*xm) * sum((hxVal([1:end], :) - yval(1:end)).^2);
 end;
 
 
